@@ -1,8 +1,18 @@
-let pressedKey = document.getElementsByTagName("data-key");
+addEventListener("keydown", function(e) {
+    let sound = this.document.querySelector(`audio[data-key="${e.keyCode}"]`) ;
+    if(sound != undefined && sound != null) {
+        this.document.querySelector(`div[data-key="${e.keyCode}"]`).setAttribute("class", "key playing");
+        sound.play();
+    }
+    else return;
+})
 
-document.getElementById("demo").onkeydown = function() {
-    pressedKey.setAttribute("class", "playing keys")
-}
-pressedKey.onkeyup = function() {
-    pressedKey.setAttribute("class", "keys")
-}
+addEventListener("keyup", function(e) {
+    this.document.querySelector(`div[data-key="${e.keyCode}"]`).setAttribute("class", "key");
+})
+
+
+
+
+
+
